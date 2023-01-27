@@ -13,7 +13,6 @@ try:
 except:
     os.system('python -m pip install ffmpeg pip')
     os.system('python -m pip install opencv-python pip')
-    os.system('python -m pip install pytesseract pip')
 
 print('''
 ░██████╗░█████╗░  ███████╗██╗██╗░░░░░██╗░░░░░███████╗██████╗░
@@ -37,7 +36,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.action_chains import ActionChains
-driver1 = webdriver.Edge()
+driver1 = webdriver.Edge(r"msedgedriver.exe")
 t.sleep(0.5)
 driver1.get('https://www.starbreak.com/')
 # Open the website in a web browser

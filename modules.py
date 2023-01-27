@@ -15,7 +15,12 @@ try:
 except:
     print('Error importing cv2! Installing fallback!')
     os.system('python -m pip install opencv-python-headless pip')
-import pytesseract
+try:
+    import pytesseract
+except:
+    os.system('python -m pip install pytesseract pip')
+    os.system('python -m pip install tesseract-ocr pip')
+    os.system('python -m pip install libtesseract-dev pip')
 def loader():
     pytesseract.pytesseract.tesseract_cmd = r'tesseract\tesseract.exe'
 def search(text,list):
