@@ -1,4 +1,6 @@
 import os
+import sys
+import time as t
 print('''
 ░██████╗░█████╗░  ███████╗██╗██╗░░░░░██╗░░░░░███████╗██████╗░
 ██╔════╝██╔══██╗  ██╔════╝██║██║░░░░░██║░░░░░██╔════╝██╔══██╗
@@ -8,7 +10,7 @@ print('''
 ╚═════╝░░╚════╝░  ╚═╝░░░░░╚═╝╚══════╝╚══════╝╚══════╝╚═╝░░╚═╝''')
 print('Running SC Filler Release 1.0')
 valid = False
-path = "main.py"
+path = os.path.join(os.path.dirname(__file__), 'main.py')
 while valid == False:
     number = input('How many bots would you like to send into SC?')
     try:
@@ -17,4 +19,5 @@ while valid == False:
     except:
         print('invalid input, please try again')
 for i in range(0,number):
+    t.sleep(0.1)
     os.popen(path)

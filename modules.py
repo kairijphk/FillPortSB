@@ -1,5 +1,6 @@
 import time as t
 import random
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -21,8 +22,8 @@ def search(text,list):
             return True
     print('Rescanning...')
 def getimage(driver):
-    driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
-    img = cv2.imread('imagescrape/Starbreak.png')
+    driver.get_screenshot_as_file('imagescrape\\Starbreak.png') 
+    img = cv2.imread('imagescrape\\Starbreak.png')
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, None, fx=2, fy=2)
     output = pytesseract.image_to_string(img)
@@ -47,8 +48,8 @@ def register(driver):
     while found == False:
         index = 0
         while index < 10:
-            driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
-            img = cv2.imread('imagescrape/Starbreak.png')
+            driver.get_screenshot_as_file('imagescrape\\Starbreak.png') 
+            img = cv2.imread('imagescrape\\Starbreak.png')
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             img = cv2.resize(img, None, fx=2, fy=2)
             index += 1
