@@ -14,7 +14,7 @@ Release V1.1.0
 Requirements:
 Python 3.10 - Install from Microsoft Store
 
-MAKE SURE YOU RUN 'main.py'
+MAKE SURE YOU RUN 'start.py'
 
 Do not redistribute without explicit permission from the author.
 
