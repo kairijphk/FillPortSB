@@ -29,11 +29,11 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.action_chains import ActionChains
 print('Running SC Filler v1.0.1 Public Release')
-driver = webdriver.Edge()
-driver.get('https://www.starbreak.com/')
+driver1 = webdriver.Edge()
+t.sleep(0.5)
+driver1.get('https://www.starbreak.com/')
 # Open the website in a web browser
 #functions
 modules.loader()
-modules.register(driver)
-modules.fillSC(driver)
+modules.register(driver1)
 input("end?")

@@ -45,25 +45,33 @@ def register(driver):
         .perform()
     found = False
     while found == False:
-        driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
-        img = cv2.imread('imagescrape/Starbreak.png')
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img = cv2.resize(img, None, fx=2, fy=2)
-        output = pytesseract.image_to_string(img)
-        output = output.lower()
-        output2 = output.split(' ')
-        if search('tutorial',output2) == True:
-            found = True
-        else:
-            if search('[h]',output2) == True:
+        index = 0
+        while index < 10:
+            driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
+            img = cv2.imread('imagescrape/Starbreak.png')
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            img = cv2.resize(img, None, fx=2, fy=2)
+            index += 1
+            output = pytesseract.image_to_string(img)
+            output = output.lower()
+            print(output)
+            output2 = output.split(' ')
+            print(output2)
+            if search('tutorial',output2) == True:
                 found = True
             else:
-                if search('skip',output2) == True:
+                if search('[h]',output2) == True:
                     found = True
-                else: 
-                    if search('main',output2) == True:
+                    break
+                else:
+                    if search('skip',output2) == True:
                         found = True
-                    print('baller')
+                        break
+                    else: 
+                        if search('main',output2) == True:
+                            found = True
+                            break
+                        print('baller')
         t.sleep(0.5)
     for i in range(10):
         ActionChains(driver)\
@@ -88,7 +96,8 @@ def fillSC(driver):
     t.sleep(1)
     performkeys(action_key_up_RIGHT,action_key_down_RIGHT,1.9)
     performkeys(action_key_up_UP,action_key_down_UP,1)
-    performkeys(action_key_up_LEFT,action_key_down_LEFT,0.175)
+    performkeys(action_key_up_LEFT,action_key_down_LEFT,0.125)
+    t.sleep(0.5)
     ActionChains(driver)\
             .send_keys("A")\
             .perform()
