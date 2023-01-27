@@ -13,19 +13,33 @@ import cv2
 import pytesseract
 def loader():
     pytesseract.pytesseract.tesseract_cmd = r'tesseract\tesseract.exe'
-
+def search(text,list):
+    for x in list:
+        if x == text:
+            found = True
+            break
 def register(driver):
+    global DevMode
+    found = False
     t.sleep(5)
     ActionChains(driver)\
         .send_keys(Keys.ENTER)\
         .perform()
-    t.sleep(1)
-    driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
-    img = cv2.imread('imagescrape/Starbreak.png')
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    print(pytesseract.image_to_string(img))
-    cv2.imshow("result", img)
-    t.sleep(10)
+    while found == False:
+        driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
+        img = cv2.imread('imagescrape/Starbreak.png')
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.resize(img, None, fx=2, fy=2)
+        output = pytesseract.image_to_string(img)
+        output = output.lower()
+        output2 = output.split(' ')
+        if DevMode == True:
+            print(output2)
+            print('---------')
+        search('tutorial',output2)
+        search('skip',output2)
+        search('[H]', output2)
+        t.sleep(0.5)
     for i in range(10):
         ActionChains(driver)\
             .send_keys("[")\
