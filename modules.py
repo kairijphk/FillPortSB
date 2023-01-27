@@ -17,11 +17,28 @@ def search(text,list):
     for x in list:
         if x == text:
             found = True
-            break
+            print('Skipping Tutorial...')
+            return True
+    print('Rescanning...')
+def getimage(driver):
+    driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
+    img = cv2.imread('imagescrape/Starbreak.png')
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = cv2.resize(img, None, fx=2, fy=2)
+    output = pytesseract.image_to_string(img)
+    output = output.lower()
+    return output
 def register(driver):
-    global DevMode
+    global found
     found = False
-    t.sleep(5)
+    while found == False:
+        output = getimage(driver)
+        print(output)
+        output2 = output.split(' ')
+        if search('login',output2) == True:
+            found = True
+            t.sleep(1)
+            break
     ActionChains(driver)\
         .send_keys(Keys.ENTER)\
         .perform()
@@ -33,12 +50,14 @@ def register(driver):
         output = pytesseract.image_to_string(img)
         output = output.lower()
         output2 = output.split(' ')
-        if DevMode == True:
-            print(output2)
-            print('---------')
-        search('tutorial',output2)
-        search('skip',output2)
-        search('[H]', output2)
+        if search('tutorial',output2) == True:
+            found = True
+        else:
+            if search('[h]',output2) == True:
+                found = True
+            else:
+                if search('skip',output2) == True:
+                    found = True
         t.sleep(0.5)
     for i in range(10):
         ActionChains(driver)\

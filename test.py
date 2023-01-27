@@ -28,7 +28,6 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.action_chains import ActionChains
-DevMode = False
 print('Running SC Filler v1.0.1 Public Release')
 driver = webdriver.Edge()
 driver.get('https://www.starbreak.com/')
