@@ -89,7 +89,7 @@ def register(driver):
                         found = True
                         break
                     else: 
-                        if search('porta;',output2) == True:
+                        if search('portal',output2) == True:
                             found = True
                             break
                         else: 
