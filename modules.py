@@ -47,9 +47,20 @@ def register(driver):
         output2 = output.split(' ')
         print(output2)
         if search('signed',output2) == True:
-            found = True
-            t.sleep(1)
-            break
+                found = True
+        else:
+            if search('uswest',output2) == True:
+                    found = True
+                    break
+            else:
+                if search('as:',output2) == True:
+                    found = True
+                    break
+                else: 
+                    if search('server:',output2) == True:
+                        found = True
+                        break
+        t.sleep(0.5)
     ActionChains(driver)\
         .send_keys(Keys.ENTER)\
         .perform()
@@ -78,10 +89,13 @@ def register(driver):
                         found = True
                         break
                     else: 
-                        if search('main',output2) == True:
+                        if search('porta;',output2) == True:
                             found = True
                             break
-                        print('baller')
+                        else: 
+                            if search('elite',output2) == True:
+                                found = True
+                                break
         t.sleep(0.5)
     for i in range(10):
         ActionChains(driver)\
