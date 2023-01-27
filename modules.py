@@ -35,13 +35,15 @@ def register(driver):
         output = getimage(driver)
         print(output)
         output2 = output.split(' ')
-        if search('login',output2) == True:
+        print(output2)
+        if search('signed',output2) == True:
             found = True
             t.sleep(1)
             break
     ActionChains(driver)\
         .send_keys(Keys.ENTER)\
         .perform()
+    found = False
     while found == False:
         driver.get_screenshot_as_file("imagescrape/Starbreak.png") 
         img = cv2.imread('imagescrape/Starbreak.png')
@@ -58,6 +60,10 @@ def register(driver):
             else:
                 if search('skip',output2) == True:
                     found = True
+                else: 
+                    if search('main',output2) == True:
+                        found = True
+                    print('baller')
         t.sleep(0.5)
     for i in range(10):
         ActionChains(driver)\
@@ -77,9 +83,12 @@ def fillSC(driver):
     action_key_up_RIGHT= ActionChains(driver).key_up(Keys.ARROW_RIGHT)
     action_key_down_UP = ActionChains(driver).key_down(Keys.SPACE)
     action_key_up_UP = ActionChains(driver).key_up(Keys.SPACE)
+    action_key_down_LEFT = ActionChains(driver).key_down(Keys.ARROW_LEFT)
+    action_key_up_LEFT = ActionChains(driver).key_up(Keys.ARROW_LEFT)
     t.sleep(1)
     performkeys(action_key_up_RIGHT,action_key_down_RIGHT,1.9)
     performkeys(action_key_up_UP,action_key_down_UP,1)
+    performkeys(action_key_up_LEFT,action_key_down_LEFT,0.175)
     ActionChains(driver)\
             .send_keys("A")\
             .perform()
