@@ -1,7 +1,16 @@
 import time as t
 import random
 import modules
-from selenium import webdriver
+import subprocess
+try:
+    from selenium import webdriver
+except:
+    print('Could not find Selenium, attempting to install...')
+    shellscript = subprocess.Popen(["setup.sh"], stdin=subprocess.PIPE)
+try:
+    from selenium import webdriver
+except:
+    print('ERROR! Program WILL ERROR. Selenium NOT FOUND.')
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
