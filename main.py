@@ -1,11 +1,20 @@
+'''
+RUN THIS FILE!
+'''
 import os
 try:
     from selenium import webdriver
 except:
     print('Could not find Selenium, attempting to install...')
     os.system('python -m pip install selenium pip')
-    os.system('python -m pip install opencv-python pip')
     print('Installed Selenium')
+try:
+    import cv2
+except:
+    os.system('python -m pip install ffmpeg pip')
+    os.system('python -m pip install opencv-python pip')
+    os.system('python -m pip install pytesseract pip')
+
 print('''
 ░██████╗░█████╗░  ███████╗██╗██╗░░░░░██╗░░░░░███████╗██████╗░
 ██╔════╝██╔══██╗  ██╔════╝██║██║░░░░░██║░░░░░██╔════╝██╔══██╗

@@ -10,7 +10,11 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.action_chains import ActionChains
-import cv2
+try:
+    import cv2
+except:
+    print('Error importing cv2! Installing fallback!')
+    os.system('python -m pip install opencv-python-headless pip')
 import pytesseract
 def loader():
     pytesseract.pytesseract.tesseract_cmd = r'tesseract\tesseract.exe'
