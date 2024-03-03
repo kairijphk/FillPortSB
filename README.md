@@ -20,6 +20,3 @@ Do not redistribute without explicit permission from the author.
 
 GitHub - Check there for the latest version.
 https://github.com/PolarisEagle/FillPortSB
-
-Created by DetectiveSmilez 
-https://www.youtube.com/@DetectiveSmilez
